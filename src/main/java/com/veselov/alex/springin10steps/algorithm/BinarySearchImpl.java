@@ -1,13 +1,16 @@
 package com.veselov.alex.springin10steps.algorithm;
 
-public class BinarySerachImpl {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class BinarySearchImpl {
 
     // Loosely coupling
+    @Autowired
+    @Qualifier("quickSortAlgorithm")
     private SortAlgorithm sort;
-
-    public BinarySerachImpl(SortAlgorithm sort) {
-        this.sort = sort;
-    }
 
     /**
      * For now, it's just a dummy algorithm.

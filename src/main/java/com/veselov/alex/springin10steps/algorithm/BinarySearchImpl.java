@@ -7,10 +7,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class BinarySearchImpl {
 
+    private SortAlgorithm sort;
+
     // Loosely coupling
     @Autowired
-    @Qualifier("quickSortAlgorithm")
-    private SortAlgorithm sort;
+    public BinarySearchImpl(@Qualifier("quickSortAlgorithm") SortAlgorithm sort) {
+        this.sort = sort;
+    }
 
     /**
      * For now, it's just a dummy algorithm.

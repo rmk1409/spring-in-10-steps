@@ -1,19 +1,22 @@
 package com.veselov.alex.springin10steps;
 
-import com.veselov.alex.springin10steps.algorithm.BinarySearchImpl;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
+import com.veselov.alex.springin10steps.business.BinarySearchImp;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
+@Configuration
+@ComponentScan
 public class SpringIn10StepsApplication {
 
-	public static void main(String[] args) {
-		ConfigurableApplicationContext applicationContext = SpringApplication.run(SpringIn10StepsApplication.class, args);
-		BinarySearchImpl search = applicationContext.getBean(BinarySearchImpl.class);
-
-		int result = search.binarySearch(new int[]{12, 15, 18, 20}, 20);
-		System.out.println(result);
-	}
+    public static void main(String[] args) {
+        try(AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringIn10StepsApplication.class)){
+            BinarySearchImp search = context.getBean(BinarySearchImp.class);
+            BinarySearchImp search2 = context.getBean(BinarySearchImp.class);
+            System.out.println(search);
+            System.out.println(search2);
+            search.binarySearch(new int[]{1, 10, 100}, 10);
+        }
+    }
 
 }
